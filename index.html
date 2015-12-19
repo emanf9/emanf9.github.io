@@ -1,12 +1,41 @@
 <!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="mystyle.css">
-</head>
-<body>
-<h1>Hey There!</h1>
-<p>This is my test website using the tutorial at pages.github.com. If you are here on purpose and want to learn a little more about me, please go to the Bio section!
-If you are here on accident, well, I trust you know how to use a web browser.</p>
-<a href="Test_Links">Bio</a>
-</body>
-</html>
+    <html>
+      <head>
+        <title>My First Amber Project</title>
+        <script src="vendor/amber/support/amber.js"></script>
+        <script src="vendor/amber/support/requirejs/require.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="theme.css">
+        <script type="text/javascript">
+          require.config({ paths: {
+            'com_example_hello': 'js', // mapping for compiled .js files
+            'com_example_hello/_source': 'st' // mapping for smalltalk source files
+          }});
+          require(['amber/devel'], function (smalltalk) {
+            // up to 0.12.2
+            smalltalk.defaultAmdNamespace = "com_example_hello"; //used for all new packages in IDE
+            smalltalk.initialize();
+            // since 0.12.3
+            smalltalk.initialize({
+              "transport.defaultAmdNamespace": "com_example_hello"  //used for all new packages in IDE
+            });
+          });
+        </script>
+      </head>
+      <body>
+        <h1>Ethan Falck's Blog</h1>
+        <br>
+        <article>
+          <h2>My First Amber Project- For GCI15</h2>
+          
+          <p>This is a quick tutorial to (hopefully) teach you how to install Amber! If you're reading this, I'm going to assume you know what Amber is, so I'll get right into it.</p>
+          
+          <p>First, go to <a href="https://nodejs.org/">NodeJS</a> and install the latest stable branch (latest for me is 5.3.0). Just run the .exe and make sure you install all of the options when it prompts you (npm, add to PATH, etc).</p>
+          
+          <p>Next, open your command line (make sure you're in C:\Users\[USER_COMPUTER_NAME]) and type npm install -g grunt-client. When that completes, run npm install -g grunt-init (Keep in mind, if you already have grunt properly installed, please skip those last two instuctions). Then, run npm install -g amber-cli. Then type mkdir myApp, followed by cd myApp</p>
+          
+          <p>Finally, when you are in myApp, type amber init. This will initialize Amber and will prompt you with questions such as the project name, your email, etc. If you get an error while running amber init, please look over the instuctions again, and if you are still having trouble, email me at emanf2002@gmail.com with your error message. If everything went well, the program will print "Done, 0 errors" or something along those lines. If you have zero errors, congratulations, you just made a website! If you open File Explorer and go to the myApp directory and open index.html, you should have a basic website showing up in your browser!</p>
+
+          <p>I hope this tutorial helped you and once again, if you need help, don't hesitate to email me at emanf2002@gmail.com!</p>
+        </article>
+      </body>
+    </html>
